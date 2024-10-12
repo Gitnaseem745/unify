@@ -1,8 +1,11 @@
+import Navbar from "./components/Navbar/Navbar";
 function App() {
   return (
    <>
-   <div className="flex items-center h-screen justify-center text-7xl leading-tight">
-   Define <span className="text-white px-2 font-bold">Right Width</span> and <span className="text-white px-2 font-bold">Height</span> for App's All Pages
+   <div className="flex justify-center items-start w-full h-screen py-20">
+        <div className="home">
+            <Navbar fav={false}/>
+        </div>
    </div>
    </>
   )

@@ -2,9 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 :root {
-  background-color: #242424;
+  background-color: #141420;
+  --bgColor: #141420;
+  --body: #4B53FF;
+  --accent: #EA3536;
+  --glassBg: #1A1A26;
+  --icon: #5D5D65;
+  --friend: #00FFAE;
+  --family: #E56969;
 }
 ::selection{
     color: white;
     background-color: black;
+}
+
+@layer base{
+    .home{
+        @apply text-4xl max-w-[430px] max-h-[932px] leading-tight
+    }
+    .btns{
+        @apply flex gap-10 items-center justify-center my-4 text-white
+    }
+    /* btn variants css */
+    .activeBtn{
+        @apply bg-[var(--body)] rounded-[50px] text-xl w-[130px] h-[60px] content-center text-center
+        cursor-pointer
+    }
+    .disableBtn{
+        @apply bg-transparent border-[3px] border-solid border-[var(--icon)] rounded-[50px] text-xl w-[135px] h-[60px] content-center text-center hover:bg-[var(--body)] hover:border-none cursor-pointer
+    }
+    /* searchbar css */
+    .search{
+        @apply flex flex-col gap-8 mt-8
+    }
+    .upper{
+        @apply flex flex-row justify-between text-white font-semibold items-center
+    }
+    .upper .penIcon{
+        @apply size-[24px] text-[var(--icon)] hover:text-white cursor-pointer
+    }
+    .lower .searchIcon{
+        @apply absolute text-[var(--icon)] top-[14px] left-4 text-[32px]
+    }
+    .lower input{
+        @apply rounded-full py-2 pl-14 bg-transparent h-[60px] w-[350px] text-[20px] text-white border-[3px] border-[var(--icon)]
+    }
 }
