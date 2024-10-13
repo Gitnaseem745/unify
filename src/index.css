@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 :root {
-  background-color: #141420;
+  background-color: #1a1a1a;
   --bgColor: #141420;
   --body: #4B53FF;
   --accent: #EA3536;
@@ -18,7 +18,7 @@
 
 @layer base{
     .home{
-        @apply text-4xl max-w-[430px] max-h-[932px] leading-tight
+        @apply text-4xl p-[40px] max-w-[430px] h-[932px] leading-tight bg-[var(--bgColor)]
     }
     .btns{
         @apply flex gap-10 items-center justify-center my-4 text-white
@@ -46,5 +46,30 @@
     }
     .lower input{
         @apply rounded-full py-2 pl-14 bg-transparent h-[60px] w-[350px] text-[20px] text-white border-[3px] border-[var(--icon)]
+    }
+    /* contact card css */
+    .contact{
+        @apply w-[350px] h-[80px] font-semibold flex flex-row gap-5 justify-center items-center mt-8
+    }
+    .contact img{
+        @apply size-20 rounded-full
+    }
+    .contact .contactDetails{
+        @apply flex flex-col justify-center items-start w-[70%] gap-1
+    }
+    .contactName{
+        @apply flex flex-row gap-2 text-white
+    }
+    .contactDetails p{
+        @apply text-[16px] text-[var(--icon)]
+    }
+    .contactFavorite{
+        @apply flex flex-col items-center justify-center w-[30%] text-[var(--body)]
+    }
+    .contactFavorite .starIcon{
+        @apply cursor-pointer
+    }
+    .contactFavorite p{
+        @apply text-sm text-[var(--icon)]
     }
 }

@@ -1,13 +1,10 @@
-import Navbar from "./components/Navbar/Navbar";
+import Home from "./components/HomePage/Home"
+
 function App() {
   return (
-   <>
-   <div className="flex justify-center items-start w-full h-screen py-20">
-        <div className="home">
-            <Navbar fav={false}/>
-        </div>
+   <div className="flex justify-center items-start w-full h-screen">
+        <Home />
    </div>
-   </>
   )
 }
 
