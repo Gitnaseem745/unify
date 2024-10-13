@@ -72,4 +72,20 @@
     .contactFavorite p{
         @apply text-sm text-[var(--icon)]
     }
+    /* modal form css */
+    .modalForm{
+        @apply w-[430px] h-[550px] bg-[var(--glassBg)] absolute bottom-0 px-[40px] py-6 overflow-x-auto
+    }
+    .formFields{
+        @apply flex flex-col mb-1;
+      }
+
+      .formFields label{
+        @apply text-[var(--body)] text-xl;
+      }
+
+      .formInput{
+        @apply rounded-xl focus:outline-none focus:border-[var(--body)] py-2 mb-4 pl-6 bg-transparent h-[60px] w-full text-[16px] text-white border-[3px] border-[var(--icon)];
+      }
+
 }
