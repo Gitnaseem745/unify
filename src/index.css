@@ -29,7 +29,7 @@
         cursor-pointer
     }
     .disableBtn{
-        @apply bg-transparent border-[3px] border-solid border-[var(--icon)] rounded-[50px] text-xl w-[135px] h-[60px] content-center text-center hover:bg-[var(--body)] hover:border-none cursor-pointer
+        @apply bg-transparent border-[3px] border-solid border-[var(--icon)] rounded-[50px] text-xl w-[135px] h-[60px] content-center text-center hover:bg-[var(--accent)] hover:border-none cursor-pointer
     }
     /* searchbar css */
     .search{
@@ -39,7 +39,7 @@
         @apply flex flex-row justify-between text-white font-semibold items-center
     }
     .upper .penIcon{
-        @apply size-[24px] text-[var(--icon)] hover:text-white cursor-pointer
+        @apply size-[24px] text-[var(--icon)] hover:text-[var(--body)] cursor-pointer
     }
     .lower .searchIcon{
         @apply absolute text-[var(--icon)] top-[14px] left-4 text-[32px]
@@ -49,7 +49,7 @@
     }
     /* contact card css */
     .contact{
-        @apply w-[350px] h-[80px] font-semibold flex flex-row gap-5 justify-center items-center mt-8
+        @apply max-w-[350px] h-[80px] font-semibold flex flex-row gap-5 justify-center items-center mt-8
     }
     .contact img{
         @apply size-20 rounded-full
@@ -74,18 +74,32 @@
     }
     /* modal form css */
     .modalForm{
-        @apply w-[430px] h-[550px] bg-[var(--glassBg)] absolute bottom-0 px-[40px] py-6 overflow-x-auto
+        @apply shadow-sm z-50 max-w-[430px] h-[550px] bg-[var(--glassBg)] absolute bottom-0 px-[40px] py-6 overflow-x-auto
     }
     .formFields{
-        @apply flex flex-col mb-1;
-      }
-
-      .formFields label{
+        @apply flex flex-col;
+    }
+    .formFields label{
         @apply text-[var(--body)] text-xl;
-      }
-
-      .formInput{
+    }
+    .formInput{
         @apply rounded-xl focus:outline-none focus:border-[var(--body)] py-2 mb-4 pl-6 bg-transparent h-[60px] w-full text-[16px] text-white border-[3px] border-[var(--icon)];
-      }
-
+    }
+    .modalBtn{
+        @apply w-full flex justify-end items-center
+    }
+    .modalBtn button{
+        @apply rounded-xl text-[16px] text-white w-[130px] self-end h-[50px] content-center text-center
+        cursor-pointer
+    }
+    /* footer css */
+    .footer{
+        @apply fixed bg-[var(--glassBg)] z-10 rounded-full mb-4 bottom-0 left-1/2 transform -translate-x-1/2
+    }
+    .footer .menus{
+        @apply flex gap-10 shadow-sm text-[18px] text-white font-semibold items-center  px-[40px] py-4 w-full
+    }
+    .menus a{
+        @apply cursor-pointer hover:text-[var(--body)]
+    }
 }

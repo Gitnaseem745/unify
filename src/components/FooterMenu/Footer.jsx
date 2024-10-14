@@ -1,11 +1,33 @@
-import React from 'react'
+import { useState } from "react"
 
-const Footer = () => {
+const Footer = ({makeFav, removeFav}) => {
+    const menu = [
+        {
+            text: 'All',
+            action: removeFav
+        },
+        {
+            text: "Favorite",
+            action: makeFav
+        },
+        {
+            text: 'Dev',
+            action: removeFav,
+            link: "https://www.instagram.com/_still_sahil/",
+        }
+    ]
+    // changing all elems color
+    // const [isActive, setIsActive] = useState(false);
+    // const toggleActive = () => {
+    //     setIsActive(!isActive);
+    // }
+    // className={isActive && 'text-[var(--body)]'}
   return (
-    <div className="footer absolute bottom-0 left-[30%]">
-    <div className='flex justify-between items-center px-[40px] w-full'>
-        <p>All</p>
-        <p>Favorite</p>
+    <div className="footer">
+    <div className='menus'>
+        {menu.map((item,  i) => (
+            <a key={i} onClick={item.action} href={item.link}>{item.text}</a>
+        ))}
     </div>
     </div>
   )
