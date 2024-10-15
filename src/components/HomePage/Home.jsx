@@ -113,8 +113,6 @@ const Home = () => {
     }
     const deleteContact = async (id) => {
         try {
-            alert("Alert! You Don't have the Permissions to Delete this Contact.");
-            return;
             const contactRef = doc(db, "contacts", id);
             await deleteDoc(contactRef);
         } catch (e) {
