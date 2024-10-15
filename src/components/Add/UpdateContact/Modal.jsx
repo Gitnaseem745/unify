@@ -92,12 +92,12 @@ const formFields = [
     {
     label: "Number:",
     type: "tel",
-    placeHolder: "0745 7200 786",
+    placeHolder: "0912 3456 789",
     },
     {
     label: "Email:",
     type: "email",
-    placeHolder: "Hinarida@icloud.com",
+    placeHolder: "Hina.rida@icloud.com",
     },
     {
     label: "Type:",
