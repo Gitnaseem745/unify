@@ -1,28 +1,77 @@
-import { Formik } from 'formik'
-import React from 'react'
-import Button from '../../Button/Button'
+import { Field, Form, Formik } from 'formik'
 import { IoIosCloseCircle } from 'react-icons/io'
+import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react';
+import { collection, addDoc, updateDoc, doc } from 'firebase/firestore';
+import { db } from '../../../database/firebase';
 
-const Modal = () => {
-  return (
-    <div className='modalForm'>
+const addContact = async (contact) => {
+    try {
+      const contactRef = collection(db, "contacts");
+      await addDoc(contactRef, contact);
+    } catch (e) {
+      console.log("Add Contact Not Working: ", e);
+    }
+  };
+  const updateContact = async (contact, id) => {
+    try {
+        const contactRef = doc(db, "contacts", id);
+        await updateDoc(contactRef, contact);
+    } catch (e) {
+        console.log("Update Contact Not Working: ", e);
+    }
+  }
+const Modal = ({visible, hideModal, isUpdate, contact}) => {
+    const [animate, setAnimate] = useState(false);
+    useEffect(() => {
+        setAnimate(visible ? true : false)
+    }, [visible]);
+    return (
+    <motion.div initial={{ y: 500 }} animate={animate ? {y:0} : {}} transition={{ ease: "easeInOut", delay: 0.2}} className={visible ? 'modalForm' : 'hidden'}>
         <div className="flex justify-end items-center">
-        <IoIosCloseCircle className='text-[var(--body)] text-2xl cursor-pointer' />
+        <IoIosCloseCircle onClick={hideModal} className='text-[var(--body)] text-2xl cursor-pointer' />
         </div>
-        <Formik>
-            <form>
+        <Formik
+        initialValues={
+            isUpdate ?
+            {
+                name: '',
+                number: '',
+                email: '',
+                type: '',
+                tag: '',
+                image: ''
+            }
+            :
+            {
+                name: '',
+                number: '',
+                email: '',
+                type: '',
+                tag: '',
+                image: ''
+            }
+        }
+        onSubmit={(values) => {
+            isUpdate ? updateContact(values, contact.id) : addContact(values);
+            hideModal();
+        }}
+        >
+            <Form>
                 {formFields.map((field) => (
                     <div className="formFields" key={field.label}>
                         <div>
-                            <label htmlFor={field.label} >{field.label}</label>
-                            <input type={field.type} className='formInput' placeholder={field.placeHolder} />
+                            <label htmlFor={field.label.replace(':', '').toLowerCase()} >{field.label}</label>
+                            <Field name={field.label.replace(':', '').toLowerCase()} placeholder={field.placeHolder} type={field.type}  className='formInput'/>
                         </div>
                     </div>
                 ))}
-            </form>
+            <div className="modalBtn">
+                <button className={isUpdate ? ('bg-[#45CCA1]') : ('bg-[var(--body)]')}>{isUpdate ? 'Update' : 'Add'} Contact</button>
+            </div>
+            </Form>
         </Formik>
-        <Button btnText='Add Contact' isActive={true}/>
-    </div>
+    </motion.div>
   )
 }
 const formFields = [
@@ -32,7 +81,7 @@ const formFields = [
     placeHolder: "Hina R",
     },
     {
-    label: "Phone:",
+    label: "Number:",
     type: "tel",
     placeHolder: "0745 7200 786",
     },
