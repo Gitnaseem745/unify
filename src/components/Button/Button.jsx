@@ -1,6 +1,6 @@
-const Button = ({btnText="No Name", isActive, showModal,}) => {
+const Button = ({btnText="No Name", isActive=false, showModal, handleRemove, isRemoveActive}) => {
   return (
-    <div className={isActive ? 'activeBtn' : 'disableBtn'} onClick={showModal}>{btnText}</div>
+    <div className={`${isRemoveActive ? 'bg-[var(--accent)]' : ""} ${isActive ? 'activeBtn' : 'disableBtn'}`} onClick={() => isActive ? showModal() : handleRemove()}>{btnText}</div>
   )
 }
 export default Button

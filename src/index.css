@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 :root {
-  background-color: #1a1a1a;
+  background-color: #101020;
   --bgColor: #141420;
   --body: #4B53FF;
   --accent: #EA3536;
@@ -29,7 +29,7 @@
         cursor-pointer
     }
     .disableBtn{
-        @apply bg-transparent border-[3px] border-solid border-[var(--icon)] rounded-[50px] text-xl w-[135px] h-[60px] content-center text-center hover:bg-[var(--accent)] hover:border-none cursor-pointer
+        @apply bg-transparent border-[3px] border-solid border-[var(--accent)] rounded-[50px] text-xl w-[135px] h-[60px] content-center text-center hover:bg-[var(--accent)] hover:border-none cursor-pointer
     }
     /* searchbar css */
     .search{
@@ -45,7 +45,7 @@
         @apply absolute text-[var(--icon)] top-[14px] left-4 text-[32px]
     }
     .lower input{
-        @apply rounded-full py-2 pl-14 bg-transparent h-[60px] w-[350px] text-[20px] text-white border-[3px] border-[var(--icon)]
+        @apply rounded-full py-2 pl-14 bg-transparent h-[60px] w-[350px] text-[20px] text-white border-[3px] border-[var(--icon)] focus:outline-none focus:border-[var(--body)]
     }
     /* contact card css */
     .contact{
@@ -65,9 +65,6 @@
     }
     .contactFavorite{
         @apply flex flex-col items-center justify-center w-[30%]
-    }
-    .contactFavorite .starIcon{
-        @apply cursor-pointer
     }
     .contactFavorite p{
         @apply text-sm text-[var(--icon)] mt-1
@@ -104,5 +101,43 @@
     }
     .menus a{
         @apply cursor-pointer hover:text-[var(--body)]
+    }
+    /* contact information page css */
+    .contactInfoPage{
+        @apply flex flex-col gap-8 text-[var(--icon)] p-[40px] w-[430px] h-[932px] bg-[var(--bgColor)]
+    }
+    .contactInfo{
+        @apply flex flex-col gap-8
+    }
+    .contactInfoMenu{
+        @apply flex justify-between text-4xl
+    }
+    .contactInfoPage .infoIcon{
+        @apply border-[1px] rounded-full p-[8px] border-[var(--icon)] cursor-pointer
+        hover:border-[var(--body)] hover:text-[var(--body)]
+    }
+    .contactMainInfo{
+        @apply flex flex-col justify-center items-center gap-2
+    }
+    .contactMainInfo h2{
+        @apply text-white text-2xl font-semibold mt-2
+    }
+    .contactMainInfo img{
+        @apply w-[100px] rounded-full h-[100px]
+    }
+    .contactOptions{
+        @apply flex flex-row justify-center items-center gap-20 text-4xl
+    }
+    .callInfo{
+        @apply text-xl font-semibold
+    }
+    .callInfo p{
+        @apply text-gray-500
+    }
+    .totalCallInfo{
+        @apply flex justify-center items-center h-[450px]
+    }
+    .totalCallInfo h1{
+        @apply text-5xl opacity-50 select-none
     }
 }

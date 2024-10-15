@@ -4,9 +4,12 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react';
 import { collection, addDoc, updateDoc, doc } from 'firebase/firestore';
 import { db } from '../../../database/firebase';
-
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 const addContact = async (contact) => {
     try {
+        alert("Alert! You Don't have the Permissions to Add this Contact.");
+        return;
       const contactRef = collection(db, "contacts");
       await addDoc(contactRef, contact);
     } catch (e) {
@@ -15,13 +18,21 @@ const addContact = async (contact) => {
   };
   const updateContact = async (contact, id) => {
     try {
+        alert("Alert! You Don't have the Permissions to Update this Contact.");
+        return;
         const contactRef = doc(db, "contacts", id);
         await updateDoc(contactRef, contact);
+        toast.success("Success Notification !", {
+            position: "top-center"
+          });
     } catch (e) {
         console.log("Update Contact Not Working: ", e);
     }
   }
 const Modal = ({visible, hideModal, isUpdate, contact}) => {
+    useEffect(() => {
+        console.log(contact);
+    },[isUpdate])
     const [animate, setAnimate] = useState(false);
     useEffect(() => {
         setAnimate(visible ? true : false)
@@ -32,15 +43,16 @@ const Modal = ({visible, hideModal, isUpdate, contact}) => {
         <IoIosCloseCircle onClick={hideModal} className='text-[var(--body)] text-2xl cursor-pointer' />
         </div>
         <Formik
+        enableReinitialize={true}
         initialValues={
             isUpdate ?
             {
-                name: '',
-                number: '',
-                email: '',
-                type: '',
-                tag: '',
-                image: ''
+                name: contact?.name || '',
+                number: contact?.number || '',
+                email: contact?.email || '',
+                type: contact?.type || '',
+                tag: contact?.tag || '',
+                image: contact?.image || ''
             }
             :
             {
@@ -52,8 +64,9 @@ const Modal = ({visible, hideModal, isUpdate, contact}) => {
                 image: ''
             }
         }
-        onSubmit={(values) => {
+        onSubmit={(values, {resetForm}) => {
             isUpdate ? updateContact(values, contact.id) : addContact(values);
+            resetForm();
             hideModal();
         }}
         >
