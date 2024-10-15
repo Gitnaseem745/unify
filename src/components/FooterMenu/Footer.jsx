@@ -11,7 +11,7 @@ const Footer = ({makeFav, removeFav, activeMenu}) => {
         {
             text: 'Dev',
             action: removeFav,
-            link: "https://www.instagram.com/_still_sahil/",
+            link: "https://www.linkedin.com/in/naseem-ansari-25474b269/",
         }
     ]
     return (

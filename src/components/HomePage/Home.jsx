@@ -17,7 +17,7 @@ const Home = () => {
     const [isRemoveActive, setIsRemoveActive] = useState(false);
     const [updateContact, setUpdateContact] = useState(false);
     const [selectedContact, setSelectedContact] = useState(null);
-    const [infoTrue, setInfoTrue] = useState(true);
+    const [infoTrue, setInfoTrue] = useState(false);
     useEffect(() => {
         const getContacts = async () => {
           try {

@@ -8,8 +8,6 @@ import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 const addContact = async (contact) => {
     try {
-        alert("Alert! You Don't have the Permissions to Add this Contact.");
-        return;
       const contactRef = collection(db, "contacts");
       await addDoc(contactRef, contact);
     } catch (e) {
@@ -18,8 +16,6 @@ const addContact = async (contact) => {
   };
   const updateContact = async (contact, id) => {
     try {
-        alert("Alert! You Don't have the Permissions to Update this Contact.");
-        return;
         const contactRef = doc(db, "contacts", id);
         await updateDoc(contactRef, contact);
         toast.success("Success Notification !", {
