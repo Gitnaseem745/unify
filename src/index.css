@@ -140,4 +140,11 @@
     .totalCallInfo h1{
         @apply text-5xl opacity-50 select-none
     }
+    /* no contact found css */
+    .nothingFound{
+        @apply flex flex-col gap-2 justify-end items-center h-[300px] opacity-50 text-[var(--icon)]
+    }
+    .nothingFound h1{
+        @apply text-xl font-bold select-none
+    }
 }

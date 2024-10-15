@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { db } from '../../database/firebase.js'
 import { collection, deleteDoc, doc, onSnapshot, setDoc } from 'firebase/firestore'
 import InfoPage from '../ContactInfoPage/InfoPage.jsx'
+import { IoPersonAddSharp } from 'react-icons/io5'
 const Home = () => {
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
@@ -136,18 +137,27 @@ const Home = () => {
     )
     :
     (
-        <>
-        <div className="home">
-            <Navbar isRemoveActive={isRemoveActive} handleRemove={handleRemove} filterSearch={filterSearch} isFav={isFav} showModal={showModal} enableUpdate={updateTrial}/>
-            <div className="contactList">
-                {filteredData?.sort().map((person, i) => (
-                    <Contact name={person?.name} key={i}  tag={person?.tag} type={person?.type} favorite={person?.favorite} makeFavorite={makeFavorite} contact={person} id={person.id} removeFavorite={removeFavorite} removeContact={removeContact} deleteContact={deleteContact} updateContact={updateContact} enableUpdate={() => enableUpdate(person)} showInfoPage={() => showInfoPage(person)}/>
-                ))}
-            </div>
-    </div>
-    <Modal visible={visible} hideModal={hideModal} isUpdate={isUpdate} contact={selectedContact}/>
-    <Footer activeMenu={activeMenu} makeFav={makeFav} removeFav={removeFav}/>
-    </>
+            <>
+            <div className="home">
+                <Navbar isRemoveActive={isRemoveActive} handleRemove={handleRemove} filterSearch={filterSearch} isFav={isFav} showModal={showModal} enableUpdate={updateTrial}/>
+                <div className="contactList">
+                    {
+                        filteredData.length <= 0 ?
+                        <div className='nothingFound'>
+                            <IoPersonAddSharp className='text-8xl' />
+                            <h1>No Contact Found</h1>
+                        </div>
+                        :
+                        (
+                            filteredData?.sort().map((person, i) => (
+                            <Contact name={person?.name} key={i}  tag={person?.tag} type={person?.type} favorite={person?.favorite} makeFavorite={makeFavorite} contact={person} id={person.id} removeFavorite={removeFavorite} removeContact={removeContact} deleteContact={deleteContact} updateContact={updateContact} enableUpdate={() => enableUpdate(person)} showInfoPage={() => showInfoPage(person)}/>
+                            ))
+                        )}
+                </div>
+        </div>
+        <Modal visible={visible} hideModal={hideModal} isUpdate={isUpdate} contact={selectedContact}/>
+        <Footer activeMenu={activeMenu} makeFav={makeFav} removeFav={removeFav}/>
+        </>
     )}
     </div>
   )
