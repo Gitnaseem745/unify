@@ -1,33 +1,36 @@
-import { Field, Form, Formik } from 'formik'
+import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { IoIosCloseCircle } from 'react-icons/io'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react';
 import { collection, addDoc, updateDoc, doc } from 'firebase/firestore';
 import { db } from '../../../database/firebase';
-import { toast, ToastContainer } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
-const addContact = async (contact) => {
-    try {
-      const contactRef = collection(db, "contacts");
-      await addDoc(contactRef, contact);
-    } catch (e) {
-      console.log("Add Contact Not Working: ", e);
-    }
-  };
-  const updateContact = async (contact, id) => {
-    try {
-        const contactRef = doc(db, "contacts", id);
-        await updateDoc(contactRef, contact);
-        toast.success("Success Notification !", {
-            position: "top-center"
-          });
-    } catch (e) {
-        console.log("Update Contact Not Working: ", e);
-    }
-  }
+import { toast } from 'react-toastify';
+import * as Yup from 'yup';
+const contactFormValidation = Yup.object().shape({
+    name: Yup.string().required("Required !"),
+    number: Yup.string().required("Required !"),
+    email: Yup.string().email("Please Enter a Valid Email!"),
+    type: Yup.string().required("Required !"),
+})
 const Modal = ({visible, hideModal, isUpdate, contact}) => {
+    const addContact = async (contact) => {
+        try {
+          const contactRef = collection(db, "contacts");
+          await addDoc(contactRef, contact);
+        } catch (e) {
+            console.log("Function Add Contact Not Working: ", e);
+        }
+    };
+    const updateContact = async (contact, id) => {
+        try {
+            const contactRef = doc(db, "contacts", id);
+            await updateDoc(contactRef, contact);
+        } catch (e) {
+            console.log("Function Update Contact Not Working: ", e);
+        }
+      }
     useEffect(() => {
-        console.log(contact);
+        console.log("Check Later File Type.");
     },[isUpdate])
     const [animate, setAnimate] = useState(false);
     useEffect(() => {
@@ -39,6 +42,7 @@ const Modal = ({visible, hideModal, isUpdate, contact}) => {
         <IoIosCloseCircle onClick={hideModal} className='text-[var(--body)] text-2xl cursor-pointer' />
         </div>
         <Formik
+        validationSchema={contactFormValidation}
         enableReinitialize={true}
         initialValues={
             isUpdate ?
@@ -63,6 +67,7 @@ const Modal = ({visible, hideModal, isUpdate, contact}) => {
         onSubmit={(values, {resetForm}) => {
             isUpdate ? updateContact(values, contact.id) : addContact(values);
             resetForm();
+            toast.success(`${isUpdate ? 'Updated' : 'Added'} Contact Successfully`);
             hideModal();
         }}
         >
@@ -72,11 +77,14 @@ const Modal = ({visible, hideModal, isUpdate, contact}) => {
                         <div>
                             <label htmlFor={field.label.replace(':', '').toLowerCase()} >{field.label}</label>
                             <Field name={field.label.replace(':', '').toLowerCase()} placeholder={field.placeHolder} type={field.type}  className='formInput'/>
+                            <div className=" text-xs text-[var(--accent)] mt-[-10px] mb-2 pl-2">
+                                <ErrorMessage name={field.label.replace(':', '').toLowerCase()} />
+                            </div>
                         </div>
                     </div>
                 ))}
             <div className="modalBtn">
-                <button className={isUpdate ? ('bg-[#45CCA1]') : ('bg-[var(--body)]')}>{isUpdate ? 'Update' : 'Add'} Contact</button>
+                <button type='submit' className={isUpdate ? ('bg-[#45CCA1]') : ('bg-[var(--body)]')}>{isUpdate ? 'Update' : 'Add'} Contact</button>
             </div>
             </Form>
         </Formik>

@@ -32,8 +32,8 @@ const Home = () => {
               setFilteredData(contactLists);
             });
             return unsubscribe;
-          } catch (error) {
-            console.log("Error while adding contact: ", error);
+          } catch (e) {
+            console.log("Function Get Contacts Not Working: ", e);
           }
         };
         getContacts();
@@ -42,6 +42,8 @@ const Home = () => {
       const showInfoPage = (person) => {
         setInfoTrue(true);
         setSelectedContact(person);
+        setUpdateContact(false);
+        setRemoveContact(false);
       }
       const hideInfoPage = () => setInfoTrue(false);
       const showFavorite = () => {
@@ -99,7 +101,7 @@ const Home = () => {
             favorite: true,
         }, {merge: true});
     } catch (e) {
-            console.log("Make Favorite Error: ", e);
+            console.log("Function Make Favorite Not Working: ", e);
         }
     }
     const removeFavorite = async (id) => {
@@ -109,7 +111,7 @@ const Home = () => {
             favorite: false,
         }, {merge: true});
     } catch (e) {
-            console.log("Remove Favorite Error: ", e);
+            console.log("Function Remove Favorite Not Working: ", e);
         }
     }
     const deleteContact = async (id) => {
@@ -117,7 +119,7 @@ const Home = () => {
             const contactRef = doc(db, "contacts", id);
             await deleteDoc(contactRef);
         } catch (e) {
-            console.log("Error while Deleting Contact: ", e);
+            console.log("Function Delete Contact Not Working: ", e);
         }
     }
     const handleRemove = () => {
