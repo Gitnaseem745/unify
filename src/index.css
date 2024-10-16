@@ -18,7 +18,7 @@
 
 @layer base{
     .home{
-        @apply overflow-y-auto overflow-x-hidden text-4xl p-[40px] max-w-[430px] h-[932px] leading-tight bg-[var(--bgColor)]
+        @apply overflow-y-auto overflow-x-hidden text-4xl p-[40px] max-w-[430px] h-[932px] leading-tight bg-[var(--bgColor)] max-[380px]:px-[60px]
     }
     .btns{
         @apply flex gap-10 items-center justify-center my-4 text-white
@@ -45,7 +45,7 @@
         @apply absolute text-[var(--icon)] top-[14px] left-4 text-[32px]
     }
     .lower input{
-        @apply rounded-full py-2 pl-14 bg-transparent h-[60px] w-[350px] text-[20px] text-white border-[3px] border-[var(--icon)] focus:outline-none focus:border-[var(--body)]
+        @apply rounded-full py-2 pl-14 bg-transparent h-[60px] w-[350px] text-[20px] text-white border-[3px] border-[var(--icon)] focus:outline-none focus:border-[var(--body)] max-[380px]:w-[320px]
     }
     /* contact card css */
     .contact{
@@ -59,6 +59,9 @@
     }
     .contactName{
         @apply flex flex-row gap-2 text-white
+    }
+    .contactName h2{
+        @apply max-[380px]:text-[16px]
     }
     .contactDetails p{
         @apply text-[16px] text-[var(--icon)] w-[55px] h-[25px]
@@ -74,7 +77,7 @@
     }
     /* modal form css */
     .modalForm{
-        @apply shadow-sm z-50 max-w-[430px] h-[550px] bg-[var(--glassBg)] absolute bottom-0 px-[40px] py-6 overflow-x-auto
+        @apply shadow-sm z-50 max-w-[430px] h-[550px] bg-[var(--glassBg)] absolute bottom-0 px-[40px] py-6 overflow-x-auto max-[380px]:px-[60px]
     }
     .formFields{
         @apply flex flex-col;
@@ -105,6 +108,7 @@
     /* contact information page css */
     .contactInfoPage{
         @apply flex flex-col gap-8 text-[var(--icon)] p-[40px] w-[430px] h-[932px] bg-[var(--bgColor)]
+        max-[380px]:px-[60px]
     }
     .contactInfo{
         @apply flex flex-col gap-8
