@@ -7,6 +7,7 @@ import { db } from '../../database/firebase.js'
 import { collection, deleteDoc, doc, onSnapshot, setDoc } from 'firebase/firestore'
 import InfoPage from '../ContactInfoPage/InfoPage.jsx'
 import { IoPersonAddSharp } from 'react-icons/io5'
+import { userImg } from '../../assets/index.js'
 const Home = () => {
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
@@ -44,8 +45,13 @@ const Home = () => {
         setSelectedContact(person);
         setUpdateContact(false);
         setRemoveContact(false);
+        hideModal();
       }
-      const hideInfoPage = () => setInfoTrue(false);
+      const hideInfoPage = () => {
+        setInfoTrue(false);
+        hideModal();
+        setIsUpdate(false);
+      };
       const showFavorite = () => {
           const favorites = data?.filter((contact) => contact.favorite);
           setFilteredData(favorites);
@@ -133,7 +139,7 @@ const Home = () => {
     infoTrue ?
     (
         <>
-        <InfoPage hideInfoPage={hideInfoPage} updateContact={() => enableUpdate(selectedContact)} contactName={selectedContact?.name} contactMail={selectedContact?.email} contactNumber={selectedContact?.number} />
+        <InfoPage hideInfoPage={hideInfoPage} updateContact={() => enableUpdate(selectedContact)} contactName={selectedContact?.name} contactMail={selectedContact?.email} contactNumber={selectedContact?.number} contactImg={selectedContact?.image || userImg}/>
         <Modal visible={visible} hideModal={hideModal} isUpdate={isUpdate} contact={selectedContact}/>
         </>
     )
@@ -152,7 +158,7 @@ const Home = () => {
                         :
                         (
                             filteredData?.sort().map((person, i) => (
-                            <Contact name={person?.name} key={i}  tag={person?.tag} type={person?.type} favorite={person?.favorite} makeFavorite={makeFavorite} contact={person} id={person.id} removeFavorite={removeFavorite} removeContact={removeContact} deleteContact={deleteContact} updateContact={updateContact} enableUpdate={() => enableUpdate(person)} showInfoPage={() => showInfoPage(person)}/>
+                            <Contact name={person?.name} key={i}  tag={person?.tag} type={person?.type} favorite={person?.favorite} makeFavorite={makeFavorite} contact={person} id={person.id} removeFavorite={removeFavorite} removeContact={removeContact} deleteContact={deleteContact} updateContact={updateContact} img={person?.image || userImg} enableUpdate={() => enableUpdate(person)} showInfoPage={() => showInfoPage(person)}/>
                             ))
                         )}
                 </div>
