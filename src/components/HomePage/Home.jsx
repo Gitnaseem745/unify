@@ -50,7 +50,7 @@ const Home = () => {
       const hideInfoPage = () => {
         setInfoTrue(false);
         hideModal();
-        setIsUpdate(false);
+        setUpdateContact(false);
       };
       const showFavorite = () => {
           const favorites = data?.filter((contact) => contact.favorite);
