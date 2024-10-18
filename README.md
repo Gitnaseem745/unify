@@ -1,5 +1,8 @@
 # Contact Management App
+**Note:** Demo Image Contact Data Is Fake! and Final Project Design Differs Slightly from Figma.
+
 ![demoImg](https://github.com/Gitnaseem745/unify/blob/main/src/assets/demoImg.png)
+
 A Contact Management web app built using **Vite** and **React**, with **Firebase** as the backend for managing contacts. This app allows users to add, update, delete, and favorite their contacts, while maintaining the contact data in a Firebase Firestore database.
 
 ---
@@ -116,6 +119,7 @@ VITE_FIREBASE_APP_ID=your_firebase_app_id
 ## Live Demo
 
 You can check out a live demo of the app here: [Live Demo](https://unify-kappa.vercel.app/)
+And Design of this app is available here: [Figma Design](https://www.figma.com/design/Q8ilZFMmxkr11AppBNG5HN/Contact-App-UI?node-id=0-1&t=4AUAQODkf1H1ecLr-1)
 
 
 ---
