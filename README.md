@@ -1,5 +1,5 @@
 # Contact Management App
-
+![demoImg](https://github.com/Gitnaseem745/unify/blob/main/src/assets/demoImg.png)
 A Contact Management web app built using **Vite** and **React**, with **Firebase** as the backend for managing contacts. This app allows users to add, update, delete, and favorite their contacts, while maintaining the contact data in a Firebase Firestore database.
 
 ---
