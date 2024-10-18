@@ -1,9 +1,8 @@
 import { IoChevronBack } from 'react-icons/io5'
 import { LuPencilLine, LuPhone } from 'react-icons/lu'
-import { userImg } from '../../assets'
 import { CiVideoOn } from 'react-icons/ci'
 import { MdOutlineMailOutline } from 'react-icons/md'
-const InfoPage = ({hideInfoPage, updateContact, contactImg=userImg, contactName="Hina R", contactNumber="07457200786", contactMail="Hinarida@icloud.com",}) => {
+const InfoPage = ({hideInfoPage, updateContact, contactImg, contactName="Hina R", contactNumber="07457200786", contactMail="Hinarida@icloud.com",}) => {
   return (
     <section className='contactInfoPage'>
         <div className='contactInfo'>

@@ -15,7 +15,6 @@
     color: white;
     background-color: black;
 }
-
 @layer base{
     .home{
         @apply overflow-y-auto overflow-x-hidden text-4xl p-[40px] max-w-[430px] min-h-screen leading-tight bg-[var(--bgColor)] max-[380px]:px-[60px]
