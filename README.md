@@ -26,6 +26,7 @@ A Contact Management web app built using **Vite** and **React**, with **Firebase
 - **Favorite Contacts:** Mark contacts as favorite and filter them accordingly.
 - **Modal Forms:** Adding and updating contacts are done through modals to enhance user experience.
 - **Responsive Design:** Fully responsive design using Tailwind CSS for optimal viewing on different screen sizes.
+- **Animation:** Framer Motion for Modal Animation
 
 ---
 
@@ -130,5 +131,5 @@ And Design of this app is available here: [Figma Design](https://www.figma.com/d
 - **Image upload is disabled** in the live demo. Any attempt to upload images will not be processed.
 - Contacts added through the live demo are temporary and will not persist.
 
----
+
 
