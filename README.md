@@ -120,16 +120,13 @@ VITE_FIREBASE_APP_ID=your_firebase_app_id
 ## Live Demo
 
 You can check out a live demo of the app here: [Live Demo](https://unify-kappa.vercel.app/)
-And Design of this app is available here: [Figma Design](https://www.figma.com/design/Q8ilZFMmxkr11AppBNG5HN/Contact-App-UI?node-id=0-1&t=4AUAQODkf1H1ecLr-1)
+The design of this app is available here: [Figma Design](https://www.figma.com/design/Q8ilZFMmxkr11AppBNG5HN/Contact-App-UI?node-id=0-1&t=4AUAQODkf1H1ecLr-1)
 
 
 ---
 
 ## Notes for Live Demo
 
-- The **Add Contact** feature works in the live demo, but only for text fields (Name, Number, Email, etc.).
-- **Image upload is disabled** in the live demo. Any attempt to upload images will not be processed.
-- Contacts added through the live demo are temporary and will not persist.
-
+- Contacts added through the live demo are stored in a test database. Please delete the contacts after testing the functionality of the app.
 
 
